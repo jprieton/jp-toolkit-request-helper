@@ -5,6 +5,8 @@ This helper serves two purposes:
 1. It pre-processes global input data for security.
 2. It provides some helper methods for fetching input data and pre-processing it.
 
+<br>
+
 ## Accessing form data
 
 ### Using POST, GET, COOKIE, or SERVER Data
@@ -19,6 +21,8 @@ With this helper methods you can simply do this:
 ```php
 $something = Request::post('something', 'default value');
 ```
+
+Please read our [Wiki](https://github.com/jprieton/jp-toolkit-request-helper/wiki) for more detailed information, advanced usage and shorthands.
 
 <br>
 
