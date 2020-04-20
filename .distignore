@@ -1,0 +1,12 @@
+bin
+composer.json
+composer.lock
+nbproject
+phpunit.xml.dist
+tests
+.distignore
+.git
+.gitattributes
+.gitignore
+.phpcs.xml.dist
+.travis.yml

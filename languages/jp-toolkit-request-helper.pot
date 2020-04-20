@@ -1,0 +1,39 @@
+# Copyright (C) 2020 Javier Prieto
+# This file is distributed under the same license as the JP Toolkit Request Helper for WordPress plugin.
+msgid ""
+msgstr ""
+"Project-Id-Version: JP Toolkit Request Helper for WordPress 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/jp-toolkit-request-helper\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2020-04-20T01:41:21-03:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.4.0\n"
+"X-Domain: jp-toolkit-request-helper\n"
+
+#. Plugin Name of the plugin
+msgid "JP Toolkit Request Helper for WordPress"
+msgstr ""
+
+#. Plugin URI of the plugin
+msgid "https://github.com/jprieton/jp-toolkit-request-helper"
+msgstr ""
+
+#. Description of the plugin
+msgid "JP Toolkit Request Helper contains a set of methods to facilitate handling form requests."
+msgstr ""
+
+#. Author of the plugin
+msgid "Javier Prieto"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://github.com/jprieton"
+msgstr ""
+
+#: jp-toolkit-request-helper.php:36
+msgid "JP Toolkit Request Helper for WordPress requires PHP version 7.0 or later."
+msgstr ""

@@ -1,0 +1,25 @@
+{
+  "name"              : "jp-toolkit/request-helper",
+  "type"              : "library",
+  "description"       : "A helper for fetching request data.",
+  "keywords"          : [ "wordpress", "wordpress-development", "wordpress-plugin", "wordpress-theme", "jp-toolkit", "request" ],
+  "homepage"          : "https://github.com/jprieton/jp-toolkit-request-helper/", 
+  "license"           : "GPL-3.0-or-later",
+  "minimum-stability" : "stable",
+  "require"           : {
+    "wptrt/admin-notices" : "^1.0",
+    "php"                 : ">=7"
+  },
+  "support"           : {
+    "issues" : "https://github.com/jprieton/jp-toolkit-request-helper/issues",
+    "wiki"   : "https://github.com/jprieton/jp-toolkit-request-helper/wiki"
+  },  
+  "autoload"          : {
+    "psr-4" : {
+      "JPToolkit\\RequestHelper\\": "includes/"
+    }
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^7"
+  }
+}
