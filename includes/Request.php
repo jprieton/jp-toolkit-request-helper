@@ -71,7 +71,7 @@ class Request {
         'callback' => [ 'sanitize_text_field' ],
         'options'  => []
     ];
-    $args     = wp_parse_args( $args, $defaults );
+    $args = wp_parse_args( $args, $defaults );
 
     if ( is_array( $field ) ) {
       foreach ( $field as $_field ) {
@@ -109,7 +109,7 @@ class Request {
         'callback' => [ 'sanitize_text_field' ],
         'options'  => []
     ];
-    $args     = wp_parse_args( $args, $defaults );
+    $args = wp_parse_args( $args, $defaults );
 
     if ( is_array( $field ) ) {
       foreach ( $field as $_field ) {
@@ -147,7 +147,7 @@ class Request {
         'callback' => [ 'sanitize_text_field' ],
         'options'  => []
     ];
-    $args     = wp_parse_args( $args, $defaults );
+    $args = wp_parse_args( $args, $defaults );
 
     if ( is_array( $field ) ) {
       foreach ( $field as $_field ) {
@@ -185,7 +185,7 @@ class Request {
         'callback' => [ 'sanitize_text_field' ],
         'options'  => []
     ];
-    $args     = wp_parse_args( $args, $defaults );
+    $args = wp_parse_args( $args, $defaults );
 
     if ( is_array( $field ) ) {
       foreach ( $field as $_field ) {
