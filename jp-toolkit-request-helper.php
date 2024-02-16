@@ -1,9 +1,10 @@
 <?php
+
 /**
  * Plugin Name:   JP Toolkit Request Helper for WordPress
  * Plugin URI:    https://github.com/jprieton/jp-toolkit-request-helper
  * Description:   JP Toolkit Request Helper contains a set of methods to facilitate handling form requests.
- * Version:       1.0.0
+ * Version:       1.1.1
  * Author:        Javier Prieto
  * Author URI:    https://github.com/jprieton
  * Text Domain:   jp-toolkit-request-helper
@@ -26,20 +27,23 @@
  */
 
 // Exit if accessed directly.
-defined( 'ABSPATH' ) || exit;
+defined('ABSPATH') || exit;
 
 // Autoloader
-require_once plugin_dir_path( __FILE__ ) . 'vendor/autoload.php';
+require_once plugin_dir_path(__FILE__) . 'vendor/autoload.php';
 
 // Check if the minimum requirements are met.
-if ( version_compare( PHP_VERSION, '7.0', '<' ) ) {
-  $message = __( 'JP Toolkit Request Helper for WordPress requires PHP version 7.0 or later.', 'jp-toolkit-request-helper' );
+if (version_compare(PHP_VERSION, '7.0', '<')) {
+  $message = __('JP Toolkit Request Helper for WordPress requires PHP version 7.0 or later.', 'jp-toolkit-request-helper');
   $options = [
-      'type' => 'error'
+    'type' => 'error'
   ];
 
   // Show notice for minimum PHP version required for JP Toolkit for WordPress.
   $notices = new WPTRT\AdminNotices\Notices();
-  $notices->add( 'jp-toolkit-request-helper-php-warning', '', $message, $options );
+  $notices->add('jp-toolkit-request-helper-php-warning', '', $message, $options);
   $notices->boot();
+} else {
+  // Initialize the plugin
+  new JPToolkit\RequestHelper\Init();
 }

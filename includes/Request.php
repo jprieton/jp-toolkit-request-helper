@@ -24,6 +24,18 @@ defined( 'ABSPATH' ) || exit;
 class Request {
 
   /**
+   * Default args
+   * @since     0.1.0
+   *
+   * @var array
+   */
+  private static $defaults = [
+      'filter'   => FILTER_SANITIZE_STRING,
+      'callback' => [ 'sanitize_text_field' ],
+      'options'  => []
+  ];
+
+  /**
    * @since     0.1.0
    *
    * @param     string      $type
@@ -59,19 +71,8 @@ class Request {
    */
   public static function get( string $field, string $default = '', array $args = [] ) {
     // If $args is string check if have a preset shorthand
-    if ( is_string( $args ) ) {
-      // Global shorthands
-      $args = apply_filters( 'jp_toolkit_helpers_input_shorthand', $args );
-      // Method shorthands
-      $args = apply_filters( 'jp_toolkit_helpers_input_get_shorthand', $args );
-    }
-
-    $defaults = [
-        'filter'   => FILTER_SANITIZE_STRING,
-        'callback' => [ 'sanitize_text_field' ],
-        'options'  => []
-    ];
-    $args = wp_parse_args( $args, $defaults );
+    $args = self::parse_args( $args, 'get' );
+    $args = wp_parse_args( $args, self::$defaults );
 
     if ( is_array( $field ) ) {
       foreach ( $field as $_field ) {
@@ -97,19 +98,8 @@ class Request {
    */
   public static function post( string $field, string $default = '', array $args = [] ) {
     // If $args is string check if have a preset shorthand
-    if ( is_string( $args ) ) {
-      // Global shorthands
-      $args = apply_filters( 'jp_toolkit_helpers_input_shorthand', $args );
-      // Method shorthands
-      $args = apply_filters( 'jp_toolkit_helpers_input_post_shorthand', $args );
-    }
-
-    $defaults = [
-        'filter'   => FILTER_SANITIZE_STRING,
-        'callback' => [ 'sanitize_text_field' ],
-        'options'  => []
-    ];
-    $args = wp_parse_args( $args, $defaults );
+    $args = self::parse_args( $args, 'post' );
+    $args = wp_parse_args( $args, self::$defaults );
 
     if ( is_array( $field ) ) {
       foreach ( $field as $_field ) {
@@ -135,19 +125,8 @@ class Request {
    */
   public static function server( string $field, string $default = '', array $args = [] ) {
     // If $args is string check if have a preset shorthand
-    if ( is_string( $args ) ) {
-      // Global shorthands
-      $args = apply_filters( 'jp_toolkit_helpers_input_shorthand', $args );
-      // Method shorthands
-      $args = apply_filters( 'jp_toolkit_helpers_input_server_shorthand', $args );
-    }
-
-    $defaults = [
-        'filter'   => FILTER_SANITIZE_STRING,
-        'callback' => [ 'sanitize_text_field' ],
-        'options'  => []
-    ];
-    $args = wp_parse_args( $args, $defaults );
+    $args = self::parse_args( $args, 'server' );
+    $args = wp_parse_args( $args, self::$defaults );
 
     if ( is_array( $field ) ) {
       foreach ( $field as $_field ) {
@@ -173,19 +152,8 @@ class Request {
    */
   public static function cookie( string $field, string $default = '', array $args = [] ) {
     // If $args is string check if have a preset shorthand
-    if ( is_string( $args ) ) {
-      // Global shorthands
-      $args = apply_filters( 'jp_toolkit_helpers_input_shorthand', $args );
-      // Method shorthands
-      $args = apply_filters( 'jp_toolkit_helpers_input_cookie_shorthand', $args );
-    }
-
-    $defaults = [
-        'filter'   => FILTER_SANITIZE_STRING,
-        'callback' => [ 'sanitize_text_field' ],
-        'options'  => []
-    ];
-    $args = wp_parse_args( $args, $defaults );
+    $args = self::parse_args( $args, 'cookie' );
+    $args = wp_parse_args( $args, self::$defaults );
 
     if ( is_array( $field ) ) {
       foreach ( $field as $_field ) {
@@ -261,6 +229,32 @@ class Request {
     $method     = '_' . strtoupper( $method );
     $query_data = wp_parse_args( $override, ${$method} );
     return http_build_query( $query_data );
+  }
+
+  /**
+   * Apply the handler if exists
+   *
+   * @since   1.1.0
+   *
+   * @param   string        $args
+   * @return  string|array
+   */
+  private static function parse_args( $args, $method ) {
+    if ( is_string( $args ) ) {
+      $handler = $args;
+
+      $method_handler = "jp_toolkit_request_helper_handler_{$method}_{$handler}";
+      if ( has_filter( $method_handler ) ) {
+        $args = apply_filters( $method_handler, $args );
+      }
+
+      $field_handler = "jp_toolkit_request_helper_handler_{$handler}";
+      if ( has_filter( $field_handler ) ) {
+        $args = apply_filters( $field_handler, $args );
+      }
+    }
+
+    return $args;
   }
 
 }

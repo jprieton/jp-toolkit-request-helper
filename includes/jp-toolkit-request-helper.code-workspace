@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": ".."
+		},
+		{
+			"path": "../../../../wp-admin"
+		},
+		{
+			"path": "../../../../wp-includes"
+		}
+	],
+	"settings": {}
+}
